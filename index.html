@@ -607,8 +607,8 @@
     <nav>
         <div class="nav-container">
             <div class="logo-container" onclick="scrollToTop()">
-                <img src="https://raw.githubusercontent.com/rminega/hearthstone-website/main/Gemini_Generated_Image_yxzq7myxzq7myxzq.png" alt="Hearthstone Logo" class="logo-img logo-light">
-                <img src="https://raw.githubusercontent.com/rminega/hearthstone-website/main/Gemini_Generated_Image_juhi78juhi78juhi.png" alt="Hearthstone Logo" class="logo-img logo-dark">
+                <img src="https://drive.google.com/uc?export=view&id=1wDTJ-YMpI6-h4yGhEE7puxhxSL1trAnU" alt="Hearthstone Logo" class="logo-img logo-light">
+                <img src="https://drive.google.com/uc?export=view&id=1NoJYD6S9mKoYYsVq8QDR00hKB0aU2IDq" alt="Hearthstone Logo" class="logo-img logo-dark">
                 <div class="logo-text">
                     <span class="logo-title">HEARTHSTONE</span>
                     <span class="logo-subtitle">Services</span>
@@ -711,7 +711,7 @@
         
         <!-- Founder -->
         <div class="team-card">
-            <img src="https://raw.githubusercontent.com/rminega/hearthstone-website/main/Gemini_Generated_Image_bxo8iebxo8iebxo8.png" alt="Richard Minega" class="team-photo">
+            <img src="https://drive.google.com/uc?export=view&id=1stP6rYoqD3VjJ7VGDSQtTim2dAa36qF_" alt="Richard Minega" class="team-photo">
             <h3>Richard Minega</h3>
             <p style="color: var(--forest-green); font-weight: 600; margin-bottom: 1rem;">Founder & CEO</p>
             <p style="max-width: 500px; color: var(--text-secondary);">With over 5 years of hands-on experience serving adults with intellectual disabilities, Richard combines direct care expertise (CRMA, MHRT/1) with a deep commitment to person-centered support and regulatory excellence.</p>
@@ -899,7 +899,6 @@
                 <a href="#approach">Our Approach</a>
                 <a href="#services">Services</a>
                 <a href="#investment">Investment</a>
-                <a href="#waitlist">Join Waitlist</a>
                 <a href="#contact">Contact</a>
             </div>
             <div class="footer-section">
@@ -922,6 +921,14 @@
 
     <script>
         // Theme Management
+        function toggleTheme() {
+            const html = document.documentElement;
+            const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
         function initTheme() {
             const hour = new Date().getHours();
             const isNight = hour >= 18 || hour < 6;
@@ -932,27 +939,18 @@
             document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
         }
         
-        function toggleTheme() {
-            const html = document.documentElement;
-            const current = html.getAttribute('data-theme');
-            const newTheme = current === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            document.getElementById('themeIcon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
-        }
+        initTheme();
         
-        // Auto-detect system preference changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        // Auto-switch theme based on time
+        setInterval(() => {
             if (!localStorage.getItem('theme')) {
-                const theme = e.matches ? 'dark' : 'light';
+                const hour = new Date().getHours();
+                const isNight = hour >= 18 || hour < 6;
+                const theme = isNight ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', theme);
                 document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
             }
-        });
-        
-        // Initialize theme
-        initTheme();
+        }, 60000); // Check every minute
         
         // Navigation
         function toggleMenu() {
@@ -972,19 +970,13 @@
             const interest = document.getElementById('interest').value;
             const message = document.getElementById('message').value;
             
-            const subject = encodeURIComponent(`Hearthstone Inquiry: ${interest}`);
-            const body = encodeURIComponent(
-                `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nInterest: ${interest}\n\nMessage:\n${message}`
-            );
+            const subject = encodeURIComponent(`Hearthstone Contact: ${interest}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nInterest: ${interest}\n\nMessage:\n${message}`);
             
             window.location.href = `mailto:rminega@hearthstoneservicesmaine.com?subject=${subject}&body=${body}`;
             
             document.getElementById('contactSuccess').style.display = 'block';
             document.getElementById('contactForm').reset();
-            
-            setTimeout(() => {
-                document.getElementById('contactSuccess').style.display = 'none';
-            }, 5000);
         }
         
         function handleWaitlistSubmit(e) {
@@ -992,22 +984,16 @@
             const email = document.getElementById('waitlist-email').value;
             const name = document.getElementById('waitlist-name').value;
             
-            const subject = encodeURIComponent('New Waitlist Subscriber');
-            const body = encodeURIComponent(
-                `New subscriber:\nName: ${name || 'Not provided'}\nEmail: ${email}`
-            );
+            const subject = encodeURIComponent('New Waitlist Subscriber - Hearthstone Services');
+            const body = encodeURIComponent(`New waitlist subscriber:\n\nEmail: ${email}\nName: ${name || 'Not provided'}\nDate: ${new Date().toLocaleDateString()}`);
             
             window.location.href = `mailto:rminega@hearthstoneservicesmaine.com?subject=${subject}&body=${body}`;
             
             document.getElementById('waitlistSuccess').style.display = 'block';
             document.getElementById('waitlistForm').reset();
-            
-            setTimeout(() => {
-                document.getElementById('waitlistSuccess').style.display = 'none';
-            }, 5000);
         }
         
-        // Smooth Scrolling
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
