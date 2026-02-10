@@ -16,24 +16,31 @@
         }
         
         :root {
-            --forest-green: #2d5016;
-            --forest-green-light: #4a7c2c;
-            --accent-green: #5d9636;
-            --bg: #ffffff;
-            --bg-alt: #f9fafb;
+            /* Signature Brand Color - Emerald 600 */
+            --emerald-600: #059669;
+            --emerald-900: #064E3B;
+            --emerald-400: #34D399;
+            --emerald-50: #ECFDF5;
+            
+            /* Light Mode Foundation */
+            --bg: #FFFFFF;
+            --bg-alt: #F9FAFB;
             --text: #111827;
-            --text-secondary: #6b7280;
+            --text-secondary: #4B5563;
             --border: #e5e7eb;
         }
         
         [data-theme="dark"] {
-            --forest-green: #5d9636;
-            --forest-green-light: #6ba83e;
-            --accent-green: #7dbb4f;
-            --bg: #0a0a0a;
-            --bg-alt: #171717;
-            --text: #f9fafb;
-            --text-secondary: #9ca3af;
+            /* Dark Mode Authority Palette */
+            --emerald-600: #059669;
+            --emerald-900: #064E3B;
+            --emerald-400: #34D399;
+            --emerald-50: #ECFDF5;
+            
+            --bg: #111827;
+            --bg-alt: #030712;
+            --text: #F9FAFB;
+            --text-secondary: #9CA3AF;
             --border: #374151;
         }
         
@@ -194,7 +201,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--forest-green) 0%, var(--forest-green-light) 50%, var(--accent-green) 100%);
+            background: linear-gradient(135deg, var(--emerald-900) 0%, var(--emerald-600) 50%, var(--emerald-400) 100%);
             padding: 8rem 2rem 4rem;
             position: relative;
         }
@@ -259,7 +266,7 @@
         
         .btn-hero-primary {
             background: white;
-            color: var(--forest-green);
+            color: var(--emerald-900);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
@@ -298,13 +305,13 @@
         .section-label {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: var(--bg-alt);
+            background: var(--emerald-50);
             border-radius: 100px;
-            color: var(--forest-green);
+            color: var(--emerald-600);
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--emerald-600);
         }
         
         h2 {
@@ -347,7 +354,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--forest-green), var(--accent-green));
+            background: linear-gradient(90deg, var(--emerald-600), var(--emerald-400));
             transform: scaleX(0);
             transition: transform 0.4s;
         }
@@ -383,7 +390,7 @@
         
         /* Stats */
         .stats {
-            background: var(--forest-green);
+            background: var(--emerald-600);
             color: white;
             border-radius: 30px;
             padding: 4rem 3rem;
@@ -422,13 +429,13 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--forest-green);
+            border: 4px solid var(--emerald-600);
             margin-bottom: 2rem;
         }
         
         /* Investment */
         .investment {
-            background: linear-gradient(135deg, var(--forest-green), var(--forest-green-light));
+            background: linear-gradient(135deg, var(--emerald-900), var(--emerald-600));
             color: white;
             border-radius: 30px;
             padding: 5rem 3rem;
@@ -491,8 +498,8 @@
         
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--forest-green);
-            box-shadow: 0 0 0 3px rgba(93, 150, 54, 0.1);
+            border-color: var(--emerald-600);
+            box-shadow: 0 0 0 3px var(--emerald-50);
         }
         
         textarea {
@@ -503,7 +510,7 @@
         button[type="submit"] {
             width: 100%;
             padding: 1.25rem;
-            background: var(--forest-green);
+            background: var(--emerald-600);
             color: white;
             border: none;
             border-radius: 12px;
@@ -514,12 +521,12 @@
         }
         
         button[type="submit"]:hover {
-            background: var(--forest-green-light);
+            background: var(--emerald-900);
             transform: translateY(-2px);
         }
         
         .success-message {
-            background: #10b981;
+            background: var(--emerald-600);
             color: white;
             padding: 1rem;
             border-radius: 12px;
@@ -558,7 +565,7 @@
         }
         
         .footer-section a:hover {
-            color: var(--forest-green);
+            color: var(--emerald-600);
         }
         
         .footer-bottom {
@@ -713,7 +720,7 @@
         <div class="team-card">
             <img src="https://drive.google.com/uc?export=view&id=1stP6rYoqD3VjJ7VGDSQtTim2dAa36qF_" alt="Richard Minega" class="team-photo">
             <h3>Richard Minega</h3>
-            <p style="color: var(--forest-green); font-weight: 600; margin-bottom: 1rem;">Founder & CEO</p>
+            <p style="color: var(--emerald-600); font-weight: 600; margin-bottom: 1rem;">Founder & CEO</p>
             <p style="max-width: 500px; color: var(--text-secondary);">With over 5 years of hands-on experience serving adults with intellectual disabilities, Richard combines direct care expertise (CRMA, MHRT/1) with a deep commitment to person-centered support and regulatory excellence.</p>
         </div>
     </section>
