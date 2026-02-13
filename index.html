@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hearthstone Services | Compassionate Care in Maine</title>
-    <meta name="description" content="Maine's newest Level II residential care facility bringing person-centered support to adults with intellectual disabilities.">
+    <title>Hearthstone Services | Person-Centered Care</title>
+    <meta name="description" content="Level II Residential Care Facility in Lewiston-Auburn, Maine, serving adults with intellectual disabilities.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,32 +16,27 @@
         }
         
         :root {
-            /* Signature Brand Color - Emerald 600 */
-            --emerald-600: #059669;
-            --emerald-900: #064E3B;
-            --emerald-400: #34D399;
-            --emerald-50: #ECFDF5;
-            
-            /* Light Mode Foundation */
-            --bg: #FFFFFF;
-            --bg-alt: #F9FAFB;
-            --text: #111827;
-            --text-secondary: #4B5563;
-            --border: #e5e7eb;
+            --green: #059669;
+            --green-dark: #047857;
+            --text: #0a0a0a;
+            --text-light: #525252;
+            --bg: #ffffff;
+            --bg-subtle: #f8f8f8;
+            --border: #e5e5e5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.08);
         }
         
         [data-theme="dark"] {
-            /* Dark Mode Authority Palette */
-            --emerald-600: #059669;
-            --emerald-900: #064E3B;
-            --emerald-400: #34D399;
-            --emerald-50: #ECFDF5;
-            
-            --bg: #111827;
-            --bg-alt: #030712;
-            --text: #F9FAFB;
-            --text-secondary: #9CA3AF;
-            --border: #374151;
+            --text: #fafafa;
+            --text-light: #a3a3a3;
+            --bg: #0a0a0a;
+            --bg-subtle: #121212;
+            --border: #262626;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
         }
         
         html {
@@ -49,11 +44,13 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         /* Navigation */
@@ -62,37 +59,44 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            transition: background 0.3s;
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-sm);
         }
         
         [data-theme="dark"] nav {
-            background: rgba(10, 10, 10, 0.9);
+            background: rgba(10, 10, 10, 0.85);
         }
         
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
+            gap: 0.875rem;
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .logo-img {
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+        
+        .logo-icon {
+            width: 48px;
             height: 48px;
-            width: auto;
-            transition: opacity 0.3s;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .logo-light {
@@ -111,526 +115,829 @@
             display: block;
         }
         
+        .logo:hover .logo-icon {
+            transform: rotate(-5deg);
+        }
+        
         .logo-text {
             display: flex;
             flex-direction: column;
+            line-height: 1.1;
         }
         
         .logo-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--text);
+            letter-spacing: -0.02em;
         }
         
         .logo-subtitle {
-            font-size: 0.625rem;
-            font-weight: 700;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--green);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--forest-green);
+            letter-spacing: 0.08em;
         }
         
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
         
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-light);
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
+            position: relative;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: var(--green);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
         }
         
         .nav-links a:hover {
-            color: var(--forest-green);
+            color: var(--green);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
         .theme-toggle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            background: none;
             border: none;
-            background: var(--bg-alt);
+            width: 20px;
+            height: 20px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-            font-size: 1.2rem;
+            padding: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .theme-toggle:hover {
-            transform: scale(1.1);
+            transform: rotate(180deg);
+        }
+        
+        .theme-toggle svg {
+            width: 100%;
+            height: 100%;
+            stroke: var(--text-light);
+            transition: stroke 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .theme-toggle:hover svg {
+            stroke: var(--green);
         }
         
         .btn-primary {
-            background: var(--forest-green);
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 100px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            background: var(--green);
+            color: #ffffff !important;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
             text-decoration: none;
-            display: inline-block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary:hover {
-            background: var(--forest-green-light);
-            transform: translateY(-2px);
+            background: var(--green-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
         }
         
         .mobile-toggle {
             display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
         }
         
         /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
+            padding: 12rem 3rem 8rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 6rem;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--emerald-900) 0%, var(--emerald-600) 50%, var(--emerald-400) 100%);
-            padding: 8rem 2rem 4rem;
+            opacity: 0;
+            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             position: relative;
         }
         
+        /* Subtle background gradient */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(5, 150, 105, 0.04) 0%, transparent 65%);
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
         .hero-content {
-            max-width: 1200px;
-            text-align: center;
-            color: white;
-            animation: fadeInUp 1s ease;
+            animation: slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
         }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
-        .badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border-radius: 100px;
-            font-size: 0.875rem;
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.08) 0%, rgba(5, 150, 105, 0.06) 100%);
+            color: var(--green);
+            padding: 0.625rem 1.25rem;
+            border-radius: 24px;
+            font-size: 0.8rem;
             font-weight: 600;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(5, 150, 105, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(5, 150, 105, 0.08);
+        }
+        
+        .hero-badge:hover {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.12) 0%, rgba(5, 150, 105, 0.08) 100%);
+            border-color: rgba(5, 150, 105, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.12);
+        }
+        
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 0.6; 
+                transform: scale(0.85);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.75rem;
+            font-weight: 800;
+            line-height: 1.05;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: -0.03em;
         }
         
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.04em;
+        .hero h1 .line {
+            display: block;
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
         }
         
-        .hero p {
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
-            max-width: 700px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-            opacity: 0.95;
+        .hero h1 .line:nth-child(1) { animation-delay: 0.3s; }
+        .hero h1 .line:nth-child(2) { animation-delay: 0.4s; }
+        .hero h1 .line:nth-child(3) { animation-delay: 0.5s; }
+        .hero h1 .line:nth-child(4) { animation-delay: 0.6s; }
+        .hero h1 .line:nth-child(5) { animation-delay: 0.7s; }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .hero h1 .text-green {
+            color: var(--green);
         }
         
-        .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 600;
+        .hero-description {
             font-size: 1.05rem;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 560px;
+            font-weight: 400;
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.8s backwards;
         }
         
-        .btn-hero-primary {
-            background: white;
-            color: var(--emerald-900);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .hero-image {
+            animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
+            position: relative;
         }
         
-        .btn-hero-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
         
-        .btn-hero-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.3), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .btn-hero-secondary:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .hero-image:hover::before {
+            opacity: 1;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
         }
         
         /* Sections */
         section {
-            padding: 6rem 2rem;
+            padding: 8rem 3rem;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
         
         .section-alt {
-            background: var(--bg-alt);
+            background: var(--bg-subtle);
+        }
+        
+        /* Add subtle decorative elements */
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--border), transparent);
+            transform: translateX(-50%);
+            opacity: 0.5;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-label {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--emerald-50);
-            border-radius: 100px;
-            color: var(--emerald-600);
-            font-size: 0.875rem;
+            color: var(--green);
             font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
             margin-bottom: 1rem;
-            border: 1px solid var(--emerald-600);
+            position: relative;
+            padding: 0 1.5rem;
         }
         
-        h2 {
-            font-size: clamp(2rem, 4vw, 3.5rem);
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 1px;
+            background: var(--green);
+            opacity: 0.3;
+        }
+        
+        .section-label::before {
+            left: 0;
+        }
+        
+        .section-label::after {
+            right: 0;
+        }
+        
+        .section-header h2 {
+            font-size: 3rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.02em;
         }
         
         .section-desc {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 700px;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 680px;
             margin: 0 auto;
-            line-height: 1.8;
+            font-weight: 400;
         }
         
-        /* Grid */
-        .grid {
+        /* Feature Grid */
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 3.5rem;
         }
         
-        .card {
+        .feature-card {
             background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 8px;
             padding: 2.5rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
             position: relative;
             overflow: hidden;
         }
         
-        .card::before {
+        .feature-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--emerald-600), var(--emerald-400));
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--green), transparent);
             transform: scaleX(0);
-            transition: transform 0.4s;
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.02) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
         }
         
-        [data-theme="dark"] .card:hover {
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-        
-        .card:hover::before {
+        .feature-card:hover::before {
             transform: scaleX(1);
         }
         
-        .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .feature-card:hover::after {
+            opacity: 1;
         }
         
-        .card h3 {
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(5, 150, 105, 0.3);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .feature-card:hover .feature-icon {
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+        
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.875rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.65;
+            font-size: 0.95rem;
+        }
+        
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 4rem;
+            margin-top: 3.5rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: -2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--green), transparent);
+        }
+        
+        .team-member.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .team-photo {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(0.15);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .team-member:hover .team-photo {
+            transform: scale(1.05);
+            border-color: var(--green);
+            filter: grayscale(0);
+            box-shadow: 0 12px 40px rgba(5, 150, 105, 0.2);
+        }
+        
+        .team-member h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
         }
         
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
+        .team-role {
+            color: var(--green);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+        
+        .team-bio {
+            color: var(--text-light);
+            line-height: 1.65;
+            font-size: 0.95rem;
+            max-width: 480px;
+            margin: 0 auto;
         }
         
         /* Stats */
-        .stats {
-            background: var(--emerald-600);
-            color: white;
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            margin: 4rem 0;
-        }
-        
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        
+        .stat-card {
             text-align: center;
+            padding: 2.5rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.03) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stat-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(5, 150, 105, 0.3);
+            box-shadow: var(--shadow-md);
         }
         
         .stat-number {
             font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 0.625rem;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 1;
         }
         
         .stat-label {
-            opacity: 0.9;
-        }
-        
-        /* Team */
-        .team-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 600px;
-            margin: 3rem auto;
-        }
-        
-        .team-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--emerald-600);
-            margin-bottom: 2rem;
-        }
-        
-        /* Investment */
-        .investment {
-            background: linear-gradient(135deg, var(--emerald-900), var(--emerald-600));
-            color: white;
-            border-radius: 30px;
-            padding: 5rem 3rem;
-            text-align: center;
-        }
-        
-        .investment h2,
-        .investment p {
-            color: white;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-        
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
         }
         
         /* Forms */
         .form-container {
-            max-width: 600px;
-            margin: 3rem auto;
+            max-width: 580px;
+            margin: 0 auto;
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
         
-        label {
+        .form-group label {
             display: block;
+            margin-bottom: 0.625rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-size: 0.9rem;
         }
         
-        input, select, textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            font-size: 1rem;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
             background: var(--bg);
             color: var(--text);
             font-family: inherit;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        input:focus, select:focus, textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
-            border-color: var(--emerald-600);
-            box-shadow: 0 0 0 3px var(--emerald-50);
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.08);
         }
         
-        textarea {
-            min-height: 150px;
+        .form-group textarea {
+            min-height: 120px;
             resize: vertical;
         }
         
-        button[type="submit"] {
+        form button {
             width: 100%;
-            padding: 1.25rem;
-            background: var(--emerald-600);
-            color: white;
+            padding: 1rem;
+            background: var(--green);
+            color: #ffffff;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        button[type="submit"]:hover {
-            background: var(--emerald-900);
-            transform: translateY(-2px);
+        form button:hover {
+            background: var(--green-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.25);
         }
         
         .success-message {
-            background: var(--emerald-600);
-            color: white;
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 1rem;
             display: none;
+            margin-top: 1.25rem;
+            padding: 1rem;
+            background: rgba(5, 150, 105, 0.08);
+            border: 1px solid rgba(5, 150, 105, 0.2);
+            border-radius: 6px;
+            color: var(--green);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
         }
         
         /* Footer */
         footer {
-            background: var(--bg-alt);
+            background: var(--bg-subtle);
+            padding: 4rem 3rem 2.5rem;
             border-top: 1px solid var(--border);
-            padding: 4rem 2rem 2rem;
         }
         
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 3.5rem;
+            margin-bottom: 2.5rem;
         }
         
         .footer-section h3 {
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+        }
+        
+        .footer-section p {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.9rem;
         }
         
         .footer-section a {
             display: block;
-            color: var(--text-secondary);
+            color: var(--text-light);
             text-decoration: none;
-            margin-bottom: 0.75rem;
-            transition: color 0.2s;
+            margin-bottom: 0.625rem;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
         }
         
         .footer-section a:hover {
-            color: var(--emerald-600);
+            color: var(--green);
         }
         
         .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-secondary);
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.85rem;
         }
         
         /* Mobile */
-        @media (max-width: 768px) {
+        @media (max-width: 968px) {
+            .nav-container {
+                padding: 1.25rem 2rem;
+            }
+            
             .nav-links {
-                display: none;
                 position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
+                top: 70px;
+                right: -100%;
+                width: 100%;
+                max-width: 320px;
+                height: calc(100vh - 70px);
                 background: var(--bg);
                 flex-direction: column;
-                padding: 2rem;
-                border-bottom: 1px solid var(--border);
+                padding: 2.5rem;
+                gap: 1.75rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid var(--border);
             }
             
             .nav-links.active {
-                display: flex;
+                right: 0;
             }
             
             .mobile-toggle {
                 display: block;
+                background: none;
+                border: none;
+                font-size: 1.5rem;
+                color: var(--text);
+                cursor: pointer;
             }
             
-            .grid {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 10rem 2rem 6rem;
+                gap: 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 3.25rem;
+            }
+            
+            section {
+                padding: 6rem 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.25rem;
+            }
+            
+            .feature-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .team-photo {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo-container" onclick="scrollToTop()">
-                <img src="https://lh3.googleusercontent.com/d/1wDTJ-YMpI6-h4yGhEE7puxhxSL1trAnU" alt="Hearthstone Logo" class="logo-img logo-light">
-                <img src="https://lh3.googleusercontent.com/d/1NoJYD6S9mKoYYsVq8QDR00hKB0aU2IDq" alt="Hearthstone Logo" class="logo-img logo-dark">
+            <a href="#" class="logo">
+                <img src="Gemini_Generated_Image_yxzq7myxzq7myxzq.png" alt="Hearthstone Logo" class="logo-icon logo-light">
+                <img src="Gemini_Generated_Image_juhi78juhi78juhi.png" alt="Hearthstone Logo" class="logo-icon logo-dark">
                 <div class="logo-text">
                     <span class="logo-title">HEARTHSTONE</span>
-                    <span class="logo-subtitle">Services</span>
+                    <span class="logo-subtitle">SERVICES</span>
                 </div>
-            </div>
+            </a>
+            
             <button class="mobile-toggle" onclick="toggleMenu()">☰</button>
+            
             <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#approach">Approach</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#approach">Our Approach</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#investment">Investment</a></li>
+                <li><a href="#investment">Investment Opportunity</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                        <span id="themeIcon">🌙</span>
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <svg id="themeIcon" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
                     </button>
                 </li>
                 <li><a href="#investment" class="btn-primary">Partner With Us</a></li>
@@ -639,39 +946,28 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="hero-content">
-            <div class="badge">Now Raising Capital • Launching 2026</div>
-            <h1>Compassionate Care.<br>Real Community.<br>Dignified Living.</h1>
-            <p>Maine's newest Level II residential care facility, bringing person-centered support to adults with intellectual disabilities in a home-like setting.</p>
-            <div class="cta-group">
-                <a href="#about" class="btn btn-hero-primary">Learn More</a>
-                <a href="#waitlist" class="btn btn-hero-secondary">Join Waitlist</a>
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Now in Development - Launching 2026</span>
             </div>
+            
+            <h1>
+                <span class="line">Person-Centered</span>
+                <span class="line">Care.</span>
+                <span class="line text-green">Community</span>
+                <span class="line text-green">Connection.</span>
+                <span class="line">Quality of Life.</span>
+            </h1>
+            
+            <p class="hero-description">
+                Hearthstone Services is launching a Level II Residential Care Facility in Lewiston-Auburn, Maine, serving adults with intellectual disabilities in a home that prioritizes dignity, community integration, and personalized support.
+            </p>
         </div>
-    </section>
-
-    <!-- Stats -->
-    <section>
-        <div class="stats">
-            <div class="stats-grid">
-                <div>
-                    <div class="stat-number">2,254</div>
-                    <div class="stat-label">Adults on Maine's waitlist</div>
-                </div>
-                <div>
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Awake staffing support</div>
-                </div>
-                <div>
-                    <div class="stat-number">55%</div>
-                    <div class="stat-label">Profit margins</div>
-                </div>
-                <div>
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">MaineCare funded</div>
-                </div>
-            </div>
+        
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Modern accessible home">
         </div>
     </section>
 
@@ -683,83 +979,135 @@
             <p class="section-desc">We believe adults with intellectual disabilities deserve personalized support, community connections, and opportunities to thrive.</p>
         </div>
         
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🏡</div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                </div>
                 <h3>Small & Personal</h3>
                 <p>3-resident home with individualized care plans tailored to each person's unique goals and preferences.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💼</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                    </svg>
+                </div>
                 <h3>Professional Systems</h3>
                 <p>Digital care coordination, family portal, and structured training ensure consistent quality.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">👨‍⚕️</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                    </svg>
+                </div>
                 <h3>Expert Leadership</h3>
                 <p>Founder with 5+ years experience, CRMA and MHRT/1 certified, hands-on regulatory expertise.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🌟</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+                    </svg>
+                </div>
                 <h3>Community Focus</h3>
                 <p>Supporting employment, recreation, social connections, and meaningful community participation.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
+                    </svg>
+                </div>
                 <h3>Staff Stability</h3>
                 <p>Competitive wages and comprehensive training ensure consistent caregivers who truly know residents.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💙</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                    </svg>
+                </div>
                 <h3>Family Partnership</h3>
                 <p>24/7 portal access, weekly photo updates, and transparent communication keep families involved.</p>
             </div>
         </div>
-        
-        <!-- Founder -->
-        <div class="team-card">
-            <img src="https://lh3.googleusercontent.com/d/1stP6rYoqD3VjJ7VGDSQtTim2dAa36qF_" alt="Richard Minega" class="team-photo">
-            <h3>Richard Minega</h3>
-            <p style="color: var(--emerald-600); font-weight: 600; margin-bottom: 1rem;">Founder & CEO</p>
-            <p style="max-width: 500px; color: var(--text-secondary);">With over 5 years of hands-on experience serving adults with intellectual disabilities, Richard combines direct care expertise (CRMA, MHRT/1) with a deep commitment to person-centered support and regulatory excellence.</p>
+    </section>
+
+    <!-- Team -->
+    <section class="section-alt">
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="Gemini_Generated_Image_bxo8iebxo8iebxo8.png" alt="Richard Minega" class="team-photo">
+                <h3>Richard Minega</h3>
+                <div class="team-role">Founder & CEO</div>
+                <p class="team-bio">With over 5 years of hands-on experience serving adults with intellectual disabilities, Richard combines direct care expertise (CRMA, MHRT/1) with a deep commitment to person-centered support and regulatory excellence.</p>
+            </div>
         </div>
     </section>
 
     <!-- Approach -->
-    <section id="approach" class="section-alt">
+    <section id="approach">
         <div class="section-header">
             <span class="section-label">How We Support</span>
             <h2>Our Approach to Care</h2>
         </div>
         
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">⏰</div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
                 <h3>24/7 Awake Staffing</h3>
                 <p>Round-the-clock supervision with no sleep shifts. Staff are always alert and available.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💊</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 16a9.065 9.065 0 0 1-6.23-.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                    </svg>
+                </div>
                 <h3>Medication Management</h3>
                 <p>CRMA-certified staff with registered nurse oversight ensuring clinical excellence.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">📋</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                    </svg>
+                </div>
                 <h3>Person-Centered Planning</h3>
                 <p>Each resident's goals drive all decisions. Regular reviews keep plans current and relevant.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🌍</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                    </svg>
+                </div>
                 <h3>Community Integration</h3>
                 <p>Employment support, volunteering, recreation, and social connections beyond the facility.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">📱</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                    </svg>
+                </div>
                 <h3>Digital Family Portal</h3>
                 <p>Real-time updates, activity calendars, photo sharing, and direct staff messaging.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">📚</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                    </svg>
+                </div>
                 <h3>Professional Training</h3>
                 <p>Comprehensive staff development in crisis prevention, health, safety, and support techniques.</p>
             </div>
@@ -767,64 +1115,121 @@
     </section>
 
     <!-- Services -->
-    <section id="services">
+    <section id="services" class="section-alt">
         <div class="section-header">
             <span class="section-label">What We Offer</span>
             <h2>Comprehensive Support Services</h2>
             <p class="section-desc">From daily living assistance to community integration, we provide holistic care tailored to each individual.</p>
         </div>
         
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🏠</div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                </div>
                 <h3>Daily Living Support</h3>
                 <p>Assistance with personal care, meal preparation, household tasks, and daily routines.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💼</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                    </svg>
+                </div>
                 <h3>Employment Support</h3>
                 <p>Job coaching, skills training, and support to maintain meaningful employment.</p>
             </div>
-            <div class="card">
-                <div class="card-icon">🎨</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+                    </svg>
+                </div>
                 <h3>Recreation & Enrichment</h3>
                 <p>Access to community activities, hobbies, social events, and personal interests.</p>
             </div>
         </div>
     </section>
 
-    <!-- Investment -->
-    <section id="investment">
-        <div class="investment">
-            <h2>Partner With Purpose</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 3rem;">Join us in addressing Maine's critical need for quality residential care while building wealth through a sustainable, high-margin business model.</p>
-            
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h3>📊 Proven Demand</h3>
-                    <p>2,200+ waiting for placement in Maine</p>
-                </div>
-                <div class="feature-card">
-                    <h3>💰 Government-Backed Revenue</h3>
-                    <p>100% MaineCare funded, zero collection risk</p>
-                </div>
-                <div class="feature-card">
-                    <h3>👨‍💼 Experienced Operator</h3>
-                    <p>5+ years expertise and regulatory knowledge</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📈 Exceptional Returns</h3>
-                    <p>55% profit margins, strong investor returns</p>
-                </div>
+    <!-- Stats -->
+    <section>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">2,254</div>
+                <div class="stat-label">Adults on Maine's waitlist</div>
             </div>
-            
-            <p style="margin: 2rem 0 2rem;">For detailed investment terms, financial projections, and partnership opportunities, please contact us directly.</p>
-            <a href="#contact" class="btn btn-hero-primary">Request Investment Info</a>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Awake staffing support</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">55%</div>
+                <div class="stat-label">Profit margins</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">MaineCare funded</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment -->
+    <section id="investment" class="section-alt">
+        <div class="section-header">
+            <span class="section-label">Partnership Opportunity</span>
+            <h2>Partner With Purpose</h2>
+            <p class="section-desc">Join us in addressing Maine's critical need for quality residential care while building wealth through a sustainable, high-margin business model.</p>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+                    </svg>
+                </div>
+                <h3>Proven Demand</h3>
+                <p>2,200+ waiting for placement in Maine</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>
+                <h3>Government-Backed Revenue</h3>
+                <p>100% MaineCare funded, zero collection risk</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+                </div>
+                <h3>Experienced Operator</h3>
+                <p>5+ years expertise and regulatory knowledge</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg fill="none" stroke="#059669" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+                    </svg>
+                </div>
+                <h3>Exceptional Returns</h3>
+                <p>55% profit margins, strong investor returns</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 4rem;">
+            <p style="font-size: 1.05rem; margin-bottom: 2rem; color: var(--text-light); font-weight: 400;">For detailed investment terms, financial projections, and partnership opportunities, please contact us directly.</p>
+            <a href="#contact" class="btn-primary">Request Investment Info</a>
         </div>
     </section>
 
     <!-- Waitlist -->
-    <section id="waitlist" class="section-alt">
+    <section id="waitlist">
         <div class="section-header">
             <span class="section-label">Be The First To Know</span>
             <h2>Join Our Waitlist</h2>
@@ -848,7 +1253,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="section-alt">
         <div class="section-header">
             <span class="section-label">Get In Touch</span>
             <h2>Let's Start a Conversation</h2>
@@ -885,9 +1290,9 @@
                 <div class="success-message" id="contactSuccess">Thank you! Your message has been sent. We'll get back to you soon.</div>
             </form>
             
-            <div style="text-align: center; margin-top: 3rem; color: var(--text-secondary);">
-                <p><strong>Richard Minega</strong></p>
-                <p>rminega@hearthstoneservicesmaine.com</p>
+            <div style="text-align: center; margin-top: 3.5rem; color: var(--text-light);">
+                <p style="font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">Richard Minega</p>
+                <p style="margin-bottom: 0.25rem;">rminega@hearthstoneservicesmaine.com</p>
                 <p>(207) 333-9428</p>
             </div>
         </div>
@@ -898,7 +1303,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Hearthstone Services</h3>
-                <p style="color: var(--text-secondary);">Providing compassionate residential care for adults with intellectual disabilities in Maine.</p>
+                <p>Providing compassionate residential care for adults with intellectual disabilities in Maine.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -910,13 +1315,13 @@
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p style="color: var(--text-secondary);">Lewiston-Auburn, Maine<br>
+                <p>Lewiston-Auburn, Maine<br>
                 rminega@hearthstoneservicesmaine.com<br>
                 (207) 333-9428</p>
             </div>
             <div class="footer-section">
                 <h3>Status</h3>
-                <p style="color: var(--text-secondary);">Licensing in Progress<br>
+                <p>Licensing in Progress<br>
                 Expected Opening: 2026<br>
                 Level II RCF</p>
             </div>
@@ -927,48 +1332,56 @@
     </footer>
 
     <script>
-        // Theme Management
+        // Theme
         function toggleTheme() {
             const html = document.documentElement;
             const theme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
+            updateThemeIcon(theme);
+        }
+        
+        function updateThemeIcon(theme) {
+            const icon = document.getElementById('themeIcon');
+            if (theme === 'dark') {
+                icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
+            } else {
+                icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+            }
         }
         
         function initTheme() {
-            const hour = new Date().getHours();
-            const isNight = hour >= 18 || hour < 6;
-            const savedTheme = localStorage.getItem('theme');
-            const theme = savedTheme || (isNight ? 'dark' : 'light');
-            
-            document.documentElement.setAttribute('data-theme', theme);
-            document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
         }
         
         initTheme();
         
-        // Auto-switch theme based on time
-        setInterval(() => {
-            if (!localStorage.getItem('theme')) {
-                const hour = new Date().getHours();
-                const isNight = hour >= 18 || hour < 6;
-                const theme = isNight ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-                document.getElementById('themeIcon').textContent = theme === 'dark' ? '☀️' : '🌙';
-            }
-        }, 60000); // Check every minute
+        // Scroll animations
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        });
         
-        // Navigation
+        document.querySelectorAll('.section-header, .feature-card, .team-member, .stat-card').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Mobile menu
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
         
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Form Handlers
+        // Forms
         function handleContactSubmit(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
